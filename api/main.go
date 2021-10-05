@@ -21,13 +21,21 @@ var albums = []album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
 }
 
-func main() {
+func setupRouter() *gin.Engine {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", postAlbums)
+	router.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong")
+	})
 
-	router.Run(":8088")
+	return router
+}
+
+func main() {
+	r := setupRouter()
+	r.Run(":8088")
 }
 
 // getAlbums responds with the list of all albums as JSON.
