@@ -25,7 +25,7 @@ jobs:
       - run:
           name: "Check lint and run test"
           command: |
-            docker-compose -f ./docker-compose.travis.yml build --no-cache
+            docker-compose -f ./docker-compose.test.yml build --no-cache
             docker-compose -f ./docker-compose.test.yaml run sample-api-test
           working_directory: api
 
