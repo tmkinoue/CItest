@@ -22,7 +22,6 @@ jobs:
           command: |
            pwd
            ls
-           tree
       - run:
           name: "Check lint and run test"
           command: "make check"
