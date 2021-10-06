@@ -17,6 +17,16 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: "check dit"
+          command: |
+           pwd
+           ls
+      - run:
+          name: "Check lint and run test"
+          command: "make check"
+          working_directory:
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
