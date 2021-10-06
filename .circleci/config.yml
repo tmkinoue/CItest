@@ -18,14 +18,14 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
-          name: "check dit"
+          name: "check dir"
           command: |
            pwd
            ls
       - run:
           name: "Check lint and run test"
           command: "make check"
-          working_directory:
+          working_directory: api
 
 
 # Invoke jobs via workflows
