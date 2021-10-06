@@ -23,6 +23,12 @@ jobs:
            pwd
            ls
       - run:
+          name: "check dir 2"
+          command: |
+           pwd
+           ls
+          working_directory: api
+      - run:
           name: "Check lint and run test"
           command: |
             docker-compose -f ./docker-compose.test.yaml build --no-cache
