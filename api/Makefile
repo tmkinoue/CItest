@@ -22,6 +22,10 @@ help: ## Print help ## make help
 test: ## Run test
 	@$(GO) test -v -cover -race $(TESTFOLDER)
 
+
+compose-test: ## Run test via docker-compose
+	docker-compose -f ./docker-compose.test.yaml run sample-api-test make test
+
 vet: ## Run vet
 	@$(GO) vet $(VETPACKAGES)
 
@@ -43,3 +47,6 @@ fmt-check: ## Run fmt-check
 	fi;
 
 check: lint vet fmt-check test ## Run golint, vet, fmt-check, test
+
+compose-check: ## Run make check via docker-compose
+	docker-compose -f ./docker-compose.test.yaml run sample-api-test

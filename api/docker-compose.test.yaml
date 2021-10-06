@@ -1,0 +1,7 @@
+version: '3'
+services:
+  sample-api-test:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-test
+    command: /bin/sh -c "make check"
