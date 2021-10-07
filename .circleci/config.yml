@@ -8,8 +8,10 @@ jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
+    # docker:
+    #   - image: cimg/base:stable 
+    machine:
+      image: ubuntu-1604:202104-01
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -17,6 +19,24 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: "check dir"
+          command: |
+           pwd
+           ls
+      - run:
+          name: "check dir 2"
+          command: |
+           pwd
+           ls
+          working_directory: api
+      - run:
+          name: "Check lint and run test"
+          command: |
+            docker-compose -f ./docker-compose.test.yaml build --no-cache
+            docker-compose -f ./docker-compose.test.yaml run sample-api-test
+          working_directory: api
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
